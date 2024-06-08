@@ -6,7 +6,7 @@ import 'package:sensors_plus/sensors_plus.dart';
 import 'package:noise_meter/noise_meter.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-
+//For privacy the exact formulas and functions have been removed
 class AccidentDetectionApp extends StatefulWidget {
   @override
   _AccidentDetectionAppState createState() => _AccidentDetectionAppState();
@@ -146,35 +146,15 @@ class _AccidentDetectionAppState extends State<AccidentDetectionApp> {
   // Handle accident detection
 void _handleAccidentDetection(double acceleration) {
   // Calculate the values based on the provided formulas
-  double accCondition = acceleration / 4.0; // Divide acceleration by 4g
-  double suCondition = _latestNoiseReading != null ? _latestNoiseReading!.meanDecibel / 140.0 : 0.0; // Divide mean decibel by 140db
-  double ssdCondition = 0.0; // Placeholder for SSD condition (not implemented)
-  double elapsedTime = 0.0; // Placeholder for elapsed time (not implemented)
 
-  // Check if the sound level exceeds 84 decibels
-  if (_latestNoiseReading != null && _latestNoiseReading!.meanDecibel > 82.0) {
-    // Check if the speed is below 24 km/h
-    if (_latestNoiseReading!.meanDecibel >= _lowSpeedThresholdKMH) {
-      // Check if (ACC/4g + SU/140db +SSD/2.06) ≥ LowSpeed-threshold
-      if ((accCondition + suCondition + ssdCondition) >= _lowSpeedThreshold) {
-        print('Accident Detected (Low Speed Threshold)!');
-        return; // Return early if low-speed threshold condition is met
-      }
-    }
 
-    // Check if (ACC/4g + SU/140db + SSD/2.06) ≥ Accident-threshold) AND (elapsed time < MP)
-    if ((accCondition + suCondition + ssdCondition) >= _accidentThreshold && elapsedTime < _mp) {
-      print('Accident Detected (Accident Threshold and Maximum Period)!');
-      return; // Return early if accident threshold and maximum period condition is met
-    }
+  
+  // For Privacy The Exact Formulas had been removed
 
-    // Check if (ACC/4g + SU/140db) ≥ Accident-threshold) AND (SP > 24km/h)
-    if ((accCondition + suCondition) >= _accidentThreshold) {
-      print('Accident Detected (Accident Threshold and Speed > 24km/h)!');
-      return; // Return early if accident threshold and speed condition is met
-    }
-  }
 
+
+
+  
   // print('No Accident Detected!');
 }
 
